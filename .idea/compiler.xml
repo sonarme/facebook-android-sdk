@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Eclipse" />
+    <option name="DEFAULT_COMPILER" value="Javac" />
     <excludeFromCompile>
-      <directory url="file://$PROJECT_DIR$/facebook/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/GraphApiSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/examples/Hackbook/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/facebook/TestApp/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/facebook/tests/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/testtest/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/SessionLoginSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/FriendPickerSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/PlacePickerSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/BooleanOGSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/ProfilePictureSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/Scrumptious/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/SwitchUserSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/HelloFacebookSample/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/Hackbook/gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/facebook/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/facebook/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/tests/target/generated-sources/annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/tests/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/tests/target/generated-sources/r" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/tests/target/generated-sources/aidl" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/facebook/target/generated-sources/r" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/facebook/target/generated-sources/aidl" includeSubdirectories="true" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
@@ -32,7 +25,24 @@
       <entry name="?*.tld" />
       <entry name="?*.ftl" />
     </wildcardResourcePatterns>
-    <annotationProcessing enabled="false" useClasspath="true" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="android-sdk" />
+        <module name="android-sdk-tests" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="android-sdk" target="1.6" />
+      <module name="android-sdk-parent" target="1.6" />
+      <module name="android-sdk-tests" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

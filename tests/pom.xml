@@ -1,36 +1,107 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.facebook.android</groupId>
-		<artifactId>android-sdk-parent</artifactId>
-		<version>3.0.0</version>
-	</parent>
+    <parent>
+        <groupId>com.facebook.android</groupId>
+        <artifactId>android-sdk-parent</artifactId>
+        <version>3.0.0</version>
+    </parent>
 
-	<artifactId>android-sdk-tests</artifactId>
+    <artifactId>android-sdk-tests</artifactId>
 
-	<packaging>apk</packaging>
+    <packaging>apk</packaging>
 
-	<dependencies>
-		<dependency>
+    <dependencies>
+        <dependency>
             <groupId>android</groupId>
             <artifactId>android</artifactId>
-		</dependency>
+        </dependency>
 
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v4</artifactId>
         </dependency>
 
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>android-sdk</artifactId>
-			<type>apklib</type>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>android-sdk</artifactId>
+            <type>apklib</type>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- use the copy resources instead of resources, which adds it to
+                     the eclipse buildpath -->
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/templates</directory>
+                                    <filtering>true</filtering>
+                                    <targetPath>${project.basedir}</targetPath>
+                                    <includes>
+                                        <include>AndroidManifest.xml</include>
+                                    </includes>
+                                </resource>
+
+                                <resource>
+                                    <directory>${project.basedir}/templates/res</directory>
+                                    <targetPath>${project.basedir}/res</targetPath>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>**/*.xml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jarsigner-plugin</artifactId>
+                <version>1.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.5</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

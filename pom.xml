@@ -13,7 +13,7 @@
 
 	<modules>
 		<module>facebook</module>
-		<module>tests</module>
+		<!--<module>tests</module>-->
 	</modules>
 
 	<properties>
